@@ -1,0 +1,67 @@
+<!--
+  Generated template for the NfcPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>NFC</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <button ion-button secondary (click)="readNfc()">Read Data</button>
+    <div *ngIf="showData">
+      <br />
+      <p>
+        Name: {{allData[0]}}
+      </p>
+      <p>
+        Lastname: {{allData[1]}}
+      </p>
+      <p>
+        Age: {{allData[2]}}
+      </p>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button secondary (click)="showNfc()">Write Data</button>
+  </ion-item>
+
+  <ion-item *ngIf="showForm">
+    <ion-card>
+
+      <ion-card-header>
+        Data to Write
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="writeNfc()" #nfcForm="ngForm">
+          <ion-item>
+            <ion-input type="text" placeholder="Name" name="dataToWrite.name" [(ngModel)]="dataToWrite.name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Lastname" name="dataToWrite.lastname" [(ngModel)]="dataToWrite.lastname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" placeholder="Age" name="dataToWrite.age" [(ngModel)]="dataToWrite.age"></ion-input>
+          </ion-item>
+          <ion-item>
+            <button block type="submit" ion-button color="secondary">Send</button>
+          </ion-item>
+        </form>
+      </ion-card-content>
+
+    </ion-card>
+  </ion-item>
+
+</ion-content>
